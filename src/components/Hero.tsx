@@ -15,7 +15,23 @@ export default function Hero() {
   return (
     <section data-section="01" className="relative min-h-[60vh] overflow-hidden">
       {/* Mobile Layout */}
-      <div className="md:hidden relative z-10 px-6 pt-24 pb-16 bg-[#0d0b14]">
+      <div className="md:hidden relative z-10 px-6 pt-24 pb-16">
+        {/* Full Width Character Image - Mobile */}
+        <motion.div
+          initial={{ opacity: 0, scale: 1.02 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: 'easeOut' }}
+          className="absolute inset-0 -z-10"
+        >
+          <Image
+            src="/synth_character_lossless.webp"
+            alt="Synth AI Cohost"
+            fill
+            className="object-cover object-top"
+            priority
+            unoptimized
+          />
+        </motion.div>
         <div className="grid grid-cols-2 gap-4 items-center">
           {/* Text Content - Left */}
           <motion.div
@@ -41,7 +57,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-[24px] font-medium text-white leading-[1.1] tracking-[-1px] mb-3"
+              className="text-[24px] font-medium text-[#1a1628] leading-[1.1] tracking-[-1px] mb-3"
             >
               Your stream.
               <br />
@@ -91,14 +107,6 @@ export default function Hero() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="col-span-1 relative h-[280px] flex flex-col items-center justify-end"
           >
-            <Image
-              src="/cdcdc.png"
-              alt="Synth AI Cohost"
-              fill
-              className="object-contain object-top"
-              priority
-              unoptimized
-            />
             {/* See it in Action Button */}
             <motion.button
               initial={{ opacity: 0, y: 20 }}
@@ -123,24 +131,25 @@ export default function Hero() {
               onClick={() => openPopup('video-demo')}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 z-10 inline-flex items-center justify-center gap-2 text-[10px] font-semibold text-[#a09bbf] border-b border-[rgba(255,255,255,0.2)] pb-0.5 hover:text-white transition-colors cursor-pointer bg-transparent"
+              className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 z-10 inline-flex items-center justify-center gap-2 text-[10px] font-semibold text-white hover:text-white transition-colors cursor-pointer bg-transparent"
             >
               Watch Demo <span className="text-[12px]">▷</span>
             </motion.button>
               
-              {/* Mobile Scroll Hint */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 text-[10px] tracking-[2.5px] uppercase text-[#9d99b5] text-center"
-              >
-                Scroll to discover
-              </motion.div>
-              
           </motion.div>
 
-          
+          {/* Mobile Scroll Hint */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="col-span-2 text-center mt-4"
+          >
+            <span className="text-[10px] tracking-[2.5px] uppercase text-white">
+              Scroll to discover
+            </span>
+          </motion.div>
+
         </div>
 
         {/* Scroll Hint */}
